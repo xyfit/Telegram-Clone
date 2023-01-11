@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/group_divider1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_group_24"
+            android:title="Import" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_person_24"
+            android:title="Gallery" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_call_24"
+            android:title="Slideshow" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_location_24"
+            android:title="Tools" />
+        <item
+            android:id="@+id/nav_manage1"
+            android:icon="@drawable/ic_bookmark_border_24"
+            android:title="Tools" />
+        <item
+            android:id="@+id/nav_manag21"
+            android:icon="@drawable/ic_settings_24"
+            android:title="Tools" />
+    </group>
+
+    <group android:id="@+id/group_divider2">
+
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_person_24"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_person_add_24"
+                android:title="Send" />
+    </group>
+
+</menu>
