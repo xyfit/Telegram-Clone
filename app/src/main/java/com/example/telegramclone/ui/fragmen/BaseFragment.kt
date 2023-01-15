@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.example.telegramclone.App
 import com.example.telegramclone.R
 import com.example.telegramclone.databinding.AppBarMainBinding
 import com.example.telegramclone.databinding.FragmentBaseBinding
@@ -37,8 +39,18 @@ class BaseFragment : Fragment() {
     }
 
     private fun initBtn() {
-        appBarMainBinding.openFr.setOnClickListener {
-            findNavController().navigate(R.id.action_baseFragment_to_chatFragment)
+        appBarMainBinding.btnLogin.setOnClickListener {
+            if (appBarMainBinding.username1.text.isNotEmpty() && appBarMainBinding.username2.text.isNotEmpty()) {
+                val user1 = appBarMainBinding.username1.text.toString()
+                val user2 = appBarMainBinding.username2.text.toString()
+
+                App.user1 = user1
+                App.user2 = user2
+                findNavController().navigate(R.id.action_baseFragment_to_chatFragment)
+            } else {
+                Toast.makeText(requireContext(),"Username should not be empty", Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 
