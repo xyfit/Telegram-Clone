@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.telegramclone.App
 import com.example.telegramclone.databinding.MyMessageItemLyBinding
 import com.example.telegramclone.databinding.OtherMessageItemLyBinding
-import com.example.telegramclone.models.Message
+import com.example.telegramclone.models.MessageModel
 
 class MessageAdapter: RecyclerView.Adapter<MessageViewHolder>() {
 
@@ -16,9 +16,9 @@ class MessageAdapter: RecyclerView.Adapter<MessageViewHolder>() {
         private const val VIEW_TYPE_MY_MESSAGE = 1
         private const val VIEW_TYPE_OTHER_MESSAGE = 2
     }
-    private val messagesList: ArrayList<Message> = ArrayList()
+    private val messagesList: ArrayList<MessageModel> = ArrayList()
 
-    fun addMessage(message: Message){
+    fun addMessage(message: MessageModel){
         messagesList.add(message)
         notifyDataSetChanged()
     }
@@ -26,7 +26,7 @@ class MessageAdapter: RecyclerView.Adapter<MessageViewHolder>() {
         private var messageText: TextView = b.txtMyMessage
         private var timeText: TextView = b.txtMyMessageTime
 
-        override fun messageBind(message: Message) {
+        override fun messageBind(message: MessageModel) {
             messageText.text = message.message
             timeText.text = DateUtils.fromMillisToTimeString(message.time)
         }
@@ -36,7 +36,7 @@ class MessageAdapter: RecyclerView.Adapter<MessageViewHolder>() {
         private var userText: TextView = b.txtOtherUser
         private var timeText: TextView = b.txtOtherMessageTime
 
-        override fun messageBind(message: Message) {
+        override fun messageBind(message: MessageModel) {
             messageText.text = message.message
             userText.text = message.user
             timeText.text = DateUtils.fromMillisToTimeString(message.time)
@@ -71,5 +71,5 @@ class MessageAdapter: RecyclerView.Adapter<MessageViewHolder>() {
 
 }
 open class MessageViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-    open fun messageBind(message:Message) {}
+    open fun messageBind(message:MessageModel) {}
 }

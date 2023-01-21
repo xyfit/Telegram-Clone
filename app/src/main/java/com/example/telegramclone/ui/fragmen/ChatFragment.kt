@@ -6,20 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.telegramclone.App
-import com.example.telegramclone.R
 import com.example.telegramclone.adapters.MessageAdapter
-import com.example.telegramclone.databinding.FragmentBaseBinding
 import com.example.telegramclone.databinding.FragmentChatBinding
-import com.example.telegramclone.models.Message
-import com.google.android.gms.common.util.DataUtils
+import com.example.telegramclone.models.MessageModel
 
 class ChatFragment : Fragment() {
     private var _binding: FragmentChatBinding? = null
     private val binding get() = _binding!!
 
     private val messageAdapter: MessageAdapter by lazy { MessageAdapter() }
+
+    val args: ChatFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +34,14 @@ class ChatFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initBtn()
+        initToolbar()
+    }
+
+    private fun initToolbar() {
+        binding.materialToolbar.title = args.modelKey?.user/*user name*/
+        binding.materialToolbar.setNavigationOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
     private fun initRecyclerView() {
@@ -47,9 +55,9 @@ class ChatFragment : Fragment() {
         binding.btnSend.setOnClickListener {
             if (binding.txtMessage.text.isNotEmpty()){
                 if (App.userPosition){
-                    messageAdapter.addMessage(Message(App.user1!!, binding.txtMessage.text.toString(), 1223L))
+                    messageAdapter.addMessage(MessageModel(App.user1!!, binding.txtMessage.text.toString(), 1223L,0))
                 }else{
-                   messageAdapter.addMessage(Message(App.user2!!, binding.txtMessage.text.toString(), 1223L))
+                   messageAdapter.addMessage(MessageModel(App.user2!!, binding.txtMessage.text.toString(), 1223L, 0))
                 }
                 App.userPosition = !App.userPosition
                 // scroll the RecyclerView to the last added element

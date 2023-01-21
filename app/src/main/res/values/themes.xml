@@ -40,4 +40,20 @@
     <style name="vaigatin_dark_light_icon">
         <item name="android:src">@drawable/ic_dark_mode_24</item>
     </style>
-</resources>
+
+    <style name="Base.TMessages.AppWidget.Badge" parent="android:Widget">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">23dp</item>
+        <item name="android:paddingLeft">7dp</item>
+        <item name="android:paddingRight">7dp</item>
+        <item name="android:paddingBottom">1dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minWidth">23dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:background">@drawable/widget_badge_background</item>
+    </style>
+
+    <style name="TMessages.AppWidget.Badge" parent="Base.TMessages.AppWidget.Badge">
+        <item name="android:textColor">#FFFFFFFF</item>
+    </style></resources>

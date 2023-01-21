@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
+    android:fitsSystemWindows="true"
     tools:context=".ui.fragmen.BaseFragment">
 
     <include
         android:id="@+id/main_app_bar_id"
         layout="@layout/app_bar_main"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

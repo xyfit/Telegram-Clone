@@ -3,85 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
-        style="@style/Widget.MaterialComponents.AppBarLayout.PrimarySurface"
+        android:background="@color/purple_500"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
+<!--        <FrameLayout-->
+<!--            android:id="@+id/status_bar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="63px"-->
+<!--            android:background="@color/purple_500"/>-->
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/m_toolbar"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_menu_24"
             app:title="@string/app_name"
+            app:titleTextColor="@color/white"
+            app:layout_scrollFlags="scroll|snap"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:elevation="0dp" />
     </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/loginLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Login"
-            android:textSize="25dp"
-            app:layout_constraintBottom_toTopOf="@id/users"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-        <LinearLayout
-            android:id="@+id/users"
-            android:layout_width="wrap_content"
-            android:minWidth="300dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/btnLogin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/loginLabel"
-            android:orientation="vertical">
-            <EditText
-                android:id="@+id/username1"
-                android:layout_width="wrap_content"
-                android:minWidth="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Username 1"
-                android:inputType="text"
-                android:maxLines="1" />
-            <EditText
-                android:id="@+id/username2"
-                android:layout_width="wrap_content"
-                android:minWidth="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Username 2"
-                android:inputType="text"
-                android:maxLines="1" />
-        </LinearLayout>
-
-
-
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enter"
-            android:layout_marginTop="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/users" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:nestedScrollingEnabled="true"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/base_item_ly" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

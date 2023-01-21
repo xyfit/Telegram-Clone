@@ -7,16 +7,26 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.fragmen.ChatFragment">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar"
+        android:background="@color/purple_500"
+        app:navigationIcon="@drawable/ic_arrow_back_24"
+        tools:title="Title"
+        app:titleTextColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_rec"
         android:layout_width="match_parent"
-        android:background="@drawable/img"
         android:layout_height="0dp"
+        android:background="@drawable/img"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />
 
     <View
         android:id="@+id/view"

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/baseFragment">
+    app:startDestination="@id/logInFragment">
 
     <fragment
         android:id="@+id/baseFragment"
@@ -13,27 +13,47 @@
         <action
             android:id="@+id/action_baseFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <argument
+            android:name="str_key"
+            app:argType="string" />
         <action
-            android:id="@+id/action_baseFragment_to_listFragment2"
-            app:destination="@id/listFragment" />
+            android:id="@+id/action_baseFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/listFragment"
-        android:name="com.example.telegramclone.ui.fragmen.ListFragment"
-        android:label="fragment_list"
-        tools:layout="@layout/fragment_list" >
-        <action
-            android:id="@+id/action_listFragment_to_baseFragment"
-            app:destination="@id/baseFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.example.telegramclone.ui.fragmen.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="model_key"
+            app:argType="com.example.telegramclone.models.MessageModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.example.telegramclone.ui.fragmen.register.LogInFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in" >
+
         <action
-            android:id="@+id/action_chatFragment_to_baseFragment"
+            android:id="@+id/action_logInFragment_to_enterSmsPasswordFragment"
+            app:destination="@id/enterSmsPasswordFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_baseFragment2"
             app:destination="@id/baseFragment"
-            app:popUpTo="@id/nav_graph" />
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/enterSmsPasswordFragment"
+        android:name="com.example.telegramclone.ui.fragmen.register.EnterSmsPasswordFragment"
+        android:label="fragment_enter_sms_password"
+        tools:layout="@layout/fragment_enter_sms_password" >
+        <action
+            android:id="@+id/action_enterSmsPasswordFragment_to_baseFragment"
+            app:destination="@id/baseFragment" />
     </fragment>
 </navigation>
