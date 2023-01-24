@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/shortcut_widget_item"
     android:layout_width="match_parent"
     android:layout_height="72dp"
@@ -15,9 +16,19 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:gravity="start"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/widget_counter"
         app:shapeAppearanceOverlay="@style/CornerSize50Percent" />
-
+    <ImageView
+        android:id="@+id/presence_pos"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="9dp"
+        android:src="@drawable/widget_badge_background"
+        app:tint="#2DBA33"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -5,8 +5,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class MessageModel(
-    var user: String,
-    var message: String,
-    var time: Long,
-    val newMsg: Int
+    var jonatuvchiUid: String = "",
+    var user: String = "",
+    var message: String = "",
+    var time: Long = 0,
+    val newMsg: Int = 0
 ) : Parcelable

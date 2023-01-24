@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.telegramclone.databinding.ActivityMainBinding
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
@@ -18,9 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         navContainer  = Navigation.findNavController(this, R.id.fragmentContainerView)
-        navContainer.run {
-
-        }
+        navContainer.run {}
 //   initWindow()
 
     }
@@ -43,5 +43,22 @@ class MainActivity : AppCompatActivity() {
         return result
     }
 
+
+    private val database = Firebase.database
+    private val myRef = database.getReference("")
+    private val user = PrefUtils.firstRegister
+    override fun onResume() {
+        super.onResume()
+        if (user.isNotBlank()){
+        myRef.child("presence").child(user).setValue(true)//Online
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (user.isNotBlank()){
+        myRef.child("presence").child(user).setValue(false)//Offline
+        }
+    }
 
 }

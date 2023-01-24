@@ -16,7 +16,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ItemHolder>(){
     inner class ItemHolder(val b: BaseItemLyBinding): RecyclerView.ViewHolder(b.root){
         fun bind(itemData: MessageModel){
             b.shortcutWidgetItemText.text = itemData.user
-            b.shortcutWidgetItemTime.text = DateUtils.fromMillisToTimeString(itemData.time)
+            b.shortcutWidgetItemTime.text = DateUtils.fromMillisToTimeString(itemData.time!!)
             b.shortcutWidgetItemMessage.text = itemData.message
             if (itemData.newMsg == 0){
                 b.shortcutWidgetItemBadge.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FF8B8D8F"))

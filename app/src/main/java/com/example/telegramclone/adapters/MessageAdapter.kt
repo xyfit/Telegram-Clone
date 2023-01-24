@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.telegramclone.App
+import com.example.telegramclone.PrefUtils
 import com.example.telegramclone.databinding.MyMessageItemLyBinding
 import com.example.telegramclone.databinding.OtherMessageItemLyBinding
 import com.example.telegramclone.models.MessageModel
@@ -16,10 +17,11 @@ class MessageAdapter: RecyclerView.Adapter<MessageViewHolder>() {
         private const val VIEW_TYPE_MY_MESSAGE = 1
         private const val VIEW_TYPE_OTHER_MESSAGE = 2
     }
-    private val messagesList: ArrayList<MessageModel> = ArrayList()
+    private var messagesList: List<MessageModel> = emptyList()
 
-    fun addMessage(message: MessageModel){
-        messagesList.add(message)
+    fun addMessage(newList: List<MessageModel>){
+        messagesList= newList
+//        messagesList.add(message)
         notifyDataSetChanged()
     }
     inner class MyMessageViewHolder (b: MyMessageItemLyBinding) : MessageViewHolder(b.root) {
@@ -61,7 +63,7 @@ class MessageAdapter: RecyclerView.Adapter<MessageViewHolder>() {
     override fun getItemViewType(position: Int): Int {
         val message = messagesList[position]
 
-        return if(App.user1 == message.user) {
+        return if(PrefUtils.firstRegister == message.user) {
             VIEW_TYPE_MY_MESSAGE
         }
         else {
