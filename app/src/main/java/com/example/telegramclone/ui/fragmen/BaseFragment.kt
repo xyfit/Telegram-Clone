@@ -68,7 +68,7 @@ class BaseFragment : Fragment() {
                             val getName = dataSnapshot.child("name").value.toString()
                             val lastMessage = ""
                             val unreadMessagesCount = 0
-                            usersList.add(MessageModel("",getName, lastMessage, 123546, unreadMessagesCount))
+                            usersList.add(MessageModel(jonatuvchiUid = "", user = getName, img = null, message = lastMessage, time = 123546, newMsg = unreadMessagesCount))
 
                         }
 

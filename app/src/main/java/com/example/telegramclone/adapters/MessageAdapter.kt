@@ -3,13 +3,17 @@ package com.example.telegramclone.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.telegramclone.App
 import com.example.telegramclone.PrefUtils
 import com.example.telegramclone.databinding.MyMessageItemLyBinding
 import com.example.telegramclone.databinding.OtherMessageItemLyBinding
 import com.example.telegramclone.models.MessageModel
+import com.squareup.picasso.Picasso
 
 class MessageAdapter: RecyclerView.Adapter<MessageViewHolder>() {
 
@@ -27,21 +31,31 @@ class MessageAdapter: RecyclerView.Adapter<MessageViewHolder>() {
     inner class MyMessageViewHolder (b: MyMessageItemLyBinding) : MessageViewHolder(b.root) {
         private var messageText: TextView = b.txtMyMessage
         private var timeText: TextView = b.txtMyMessageTime
+        private var myImg: ImageView = b.myImg
+        private var imgCard: CardView = b.myCardView
 
         override fun messageBind(message: MessageModel) {
             messageText.text = message.message
             timeText.text = DateUtils.fromMillisToTimeString(message.time)
+            Picasso.get().load(message.img).resize(500, 600).centerCrop().into(myImg);
+            imgCard.isVisible = message.img != null//rasim path kelmasa rasimni berkit
+            messageText.isVisible = message.message.isNotEmpty()//matin kelmasa textviewni berkit
         }
     }
     inner class OtherMessageViewHolder (b: OtherMessageItemLyBinding) : MessageViewHolder(b.root) {
         private var messageText: TextView = b.txtOtherMessage
         private var userText: TextView = b.txtOtherUser
         private var timeText: TextView = b.txtOtherMessageTime
+        private var otherImg: ImageView = b.otherImg
+        private var imgCard: CardView = b.otherCardView
 
         override fun messageBind(message: MessageModel) {
             messageText.text = message.message
             userText.text = message.user
             timeText.text = DateUtils.fromMillisToTimeString(message.time)
+            Picasso.get().load(message.img).resize(500, 600).centerCrop().into(otherImg);
+            imgCard.isVisible = message.img != null//rasim path kelmasa rasimni berkit
+            messageText.isVisible = message.message.isNotEmpty()//matin kelmasa textviewni berkit
         }
     }
 

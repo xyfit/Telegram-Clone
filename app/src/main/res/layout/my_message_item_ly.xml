@@ -2,23 +2,55 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <RelativeLayout
+        android:id="@+id/abc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/my_message_bubble"
+        android:elevation="5dp"
+        android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/myCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="10dp"
+            android:layout_gravity="center"
+            app:cardBackgroundColor="@android:color/transparent">
+            <ImageView
+                android:id="@+id/my_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minWidth="150dp"
+                android:minHeight="150dp"
+                android:maxWidth="200dp"
+                android:maxHeight="200dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/ic_launcher_background" />
+        </androidx.cardview.widget.CardView>
+
     <TextView
         android:id="@+id/txtMyMessage"
+        android:layout_below="@id/myCardView"
         android:text="Hi, my message"
-        android:background="@drawable/my_message_bubble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxWidth="240dp"
+        android:layout_alignEnd="@id/myCardView"
         android:padding="15dp"
-        android:elevation="5dp"
         android:textColor="#ffffff"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="5dp"/>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/txtMyMessageTime"
@@ -28,7 +60,8 @@
         android:textSize="10sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
+        tools:textColor="@android:color/black"
         android:layout_marginRight="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtMyMessage"
-        app:layout_constraintRight_toLeftOf="@+id/txtMyMessage" />
+        app:layout_constraintBottom_toBottomOf="@+id/abc"
+        app:layout_constraintRight_toLeftOf="@+id/abc" />
 </androidx.constraintlayout.widget.ConstraintLayout>

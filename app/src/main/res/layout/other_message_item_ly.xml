@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="8dp">
 
     <TextView
@@ -12,36 +13,69 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="John Doe"
-        android:textSize="12sp"
         android:textColor="@android:color/white"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/txtOtherMessage"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/abs2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:textColor="@android:color/black" />
 
-    <TextView
-        android:id="@+id/txtOtherMessage"
+    <RelativeLayout
+        android:id="@+id/abs2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:background="@drawable/other_message_bubble"
         android:elevation="5dp"
-        android:maxWidth="240dp"
-        android:padding="15dp"
-        android:text="Hi, John's message"
-        android:textColor="#ffffff"
+        android:maxWidth="300dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtOtherUser" />
+        app:layout_constraintTop_toBottomOf="@+id/txtOtherUser">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/otherCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/other_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minWidth="150dp"
+                android:minHeight="150dp"
+                android:maxWidth="200dp"
+                android:maxHeight="200dp"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/ic_launcher_background" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/txtOtherMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/otherCardView"
+            android:layout_marginTop="4dp"
+            android:maxWidth="240dp"
+            android:padding="15dp"
+            android:text="Hi, John's message"
+            android:textColor="#ffffff" />
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/txtOtherMessageTime"
-        android:text="12:00 PM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
-
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        app:layout_constraintLeft_toRightOf="@+id/txtOtherMessage"
         android:layout_marginLeft="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtOtherMessage" />
+        android:text="12:00 PM"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/abs2"
+        app:layout_constraintLeft_toRightOf="@+id/abs2"
+        tools:textColor="@android:color/black" />
 </androidx.constraintlayout.widget.ConstraintLayout>
